@@ -1,4 +1,4 @@
-![Oswald](./Oswald.svg)
+![Oswald](./oswaldLogo.svg)
 
 > Easy to create and maintain endpoints for an API. Built on top of Falcon.
 
