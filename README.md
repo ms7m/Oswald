@@ -2,7 +2,8 @@
 
 > Easy to create and maintain endpoints for an API. Built on top of Falcon.
 
-![falconBadge](https://img.shields.io/badge/built%20on-Falcon-orange?style=flat-square) ![pythonBadge](https://img.shields.io/badge/Python-3.6%2F3.7-blue?style=flat-square)
+![falconBadge](https://img.shields.io/badge/built%20on-Falcon-orange?style=flat-square) ![pythonBadge](https://img.shields.io/badge/Python-3.6%2F3.7-blue?style=flat-square) ![Actions Status](https://github.com/ms7m/Oswald/workflows/OswaldTests/badge.svg)
+
 ***
 
 Automatic detection and addition of new endpoints. disable any endpoint in one line
