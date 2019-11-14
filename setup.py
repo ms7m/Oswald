@@ -1,35 +1,65 @@
+
+import io
+import os
+import sys
+from shutil import rmtree
+
+from setuptools import Command, find_packages, setup
+
 NAME = "oswald"
-VERSION = "0.0.1"
 DESCRIPTION = "Organize and rapidly/easily create endpoints for an API. Built on top of Falcon."
 AUTHOR = "Mustafa Mohamed"
-AUTHOR_EMAIL = "mustafa@ms7m.me"
+EMAIL = "mustafa@ms7m.me"
 REQUIRES_PYTHON = '>=3.6.0'
 URL = 'https://github.com/ms7m/oswald'
+VERSION = '0.0.4'
 
-from setuptools import find_packages, setup, Command
+
+
 
 REQUIRED = [
     'falcon',
     'loguru'
 ]
 
+here = os.path.abspath(os.path.dirname(__file__))
+
+# Import the README and use it as the long-description.
+# Note: this will only work if 'README.md' is present in your MANIFEST.in file!
+try:
+    with io.open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
+        long_description = '\n' + f.read()
+except FileNotFoundError:
+    long_description = DESCRIPTION
+
+# Load the package's __version__.py module as a dictionary.
+about = {}
+if not VERSION:
+    project_slug = NAME.lower().replace("-", "_").replace(" ", "_")
+    with open(os.path.join(here, project_slug, '__version__.py')) as f:
+        exec(f.read(), about)
+else:
+    about['__version__'] = VERSION
+
+# Where the magic happens:
 setup(
-    name="oswald",
-    version="0.0.3",
+    name=NAME,
+    version=about['__version__'],
     description=DESCRIPTION,
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     author=AUTHOR,
-    author_email=AUTHOR_EMAIL,
+    author_email=EMAIL,
     python_requires=REQUIRES_PYTHON,
     url=URL,
-    #packages=find_packages(exclude=["testing", "*.testing", "*.testing.*", "testing.*"]),
+    packages=find_packages(exclude=["testing", "*.testing", "*.testing.*", "testing.*"]),
     # If your package is a single module, use this instead of 'packages':
-    py_modules=['oswald'],
+    # py_modules=['mypackage'],
 
     # entry_points={
     #     'console_scripts': ['mycli=mymodule:cli'],
     # },
-    #install_requires=REQUIRED,
-    #extras_require=EXTRAS,
+    install_requires=REQUIRED,
     include_package_data=True,
     license='MIT',
     classifiers=[
@@ -42,4 +72,5 @@ setup(
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy'
     ],
+    # $ setup.py publish support.
 )
